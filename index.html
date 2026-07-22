@@ -31,6 +31,30 @@ body {
 
 
 </style>
+  <script>async function updatecounthdd() {
+    try {
+        const response = await fetch("https://yourdomain.com/api/hdd");
+        const size = await response.text();
+
+        document.getElementById("hdd").textContent = size.trim();
+    } catch (err) {
+        document.getElementById("hdd").textContent = "Unavailable";
+        console.error(err);
+    }
+}
+    async function updatecountssd() {
+    try {
+        const response = await fetch("https://lurix-api.mathai.cloud/api/ssd");
+        const size = await response.text();
+
+        document.getElementById("ssd").textContent = size.trim();
+    } catch (err) {
+        document.getElementById("ssd").textContent = "Unavailable";
+        console.error(err);
+    }
+}
+    updatecounthdd();updatecountssd();
+</script>
 </head>
 <body>
   
@@ -39,7 +63,7 @@ body {
   <h4>Organic (T.L.A.P.): not public, though used to be</h4>
 
   <h4>Currently we have</h4>
-  <h5>2TiB SSD Storage</h5>  
-  <h5>2TB HDD Storage</h5>
+  <h5><span id="hdd">Loading...</span>/2 TiB (SSD Storage)</h5>  
+  <h5><span id="ssd">Loading...</span>/2 TB (HDD Storage)</h5>
 </body>
 </html>
